@@ -1,0 +1,19 @@
+# This is a test
+# 
+# This is another test
+# The next line (which is empty) should just be ignored
+
+# Final test of the comments
+# 
+# Testing creating a client
+NEW-CLIENT Johnny Cage
+# Printing client info
+GET-CLIENT-INFO Johnny Cage
+# 
+# Testing creating another client
+NEW-CLIENT Sonia Blade
+# Printing client info
+GET-CLIENT-INFO Sonia Blade
+# 
+# Testing printing client info for a client that does not exist
+GET-CLIENT-INFO Shao Kahn

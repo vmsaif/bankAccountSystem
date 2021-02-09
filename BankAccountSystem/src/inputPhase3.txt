@@ -1,0 +1,30 @@
+# This is a test
+# 
+# This is another test
+# The next line (which is empty) should just be ignored
+
+# Final test of the comments
+# 
+# Testing creating a client
+NEW-CLIENT Johnny Cage
+# Printing client info
+GET-CLIENT-INFO Johnny Cage
+# 
+# Testing creating another client
+NEW-CLIENT Sonia Blade
+# Printing client info
+GET-CLIENT-INFO Sonia Blade
+# 
+# Testing printing client info for a client that does not exist
+GET-CLIENT-INFO Shao Kahn
+# 
+
+# Testing wrong commands
+# This should throw an InvalidCommandArgsException
+GET-CLIENT-INFO Sonia
+# This should throw a WrongCommandException
+WRONG this will throw an exception!
+# This is another InvalidCommandArgsException
+NEW-CLIENT
+
+

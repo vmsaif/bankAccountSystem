@@ -1,0 +1,118 @@
+# This is a test
+# 
+# This is another test
+# The next line (which is empty) should just be ignored
+
+# Final test of the comments
+# 
+# Testing creating a client
+NEW-CLIENT Johnny Cage
+# Printing client info
+GET-CLIENT-INFO Johnny Cage
+# 
+# Testing creating another client
+NEW-CLIENT Sonia Blade
+# Printing client info
+GET-CLIENT-INFO Sonia Blade
+# 
+# Testing printing client info for a client that does not exist
+GET-CLIENT-INFO Shao Kahn
+# 
+
+# Testing wrong commands
+# This should throw an InvalidCommandArgsException
+GET-CLIENT-INFO Sonia
+# This should throw a WrongCommandException
+WRONG this will throw an exception!
+# This is another InvalidCommandArgsException
+NEW-CLIENT
+# 
+
+# Creating a new chequing account with 0 balance for Johnny Cage
+NEW-ACCOUNT CHQ Johnny Cage 0
+# Printing account info for previously created account (id = 500000)
+GET-ACCOUNT-INFO 500000
+# 
+
+# Testing creating a chequing account for a client that does not exist
+NEW-ACCOUNT CHQ Johnny Junior 0
+# Testing creating an account of a type that does not exist
+NEW-ACCOUNT IDK Johnny Cage 0
+# Testing creating an account with an incorrect number of arguments
+NEW-ACCOUNT CHQ Sonia Blade
+# 
+
+# Creating an account for Sonia Blade with 1000 balance
+NEW-ACCOUNT CHQ Sonia Blade 1000
+# Printing account info for previously created account (id = 500001)
+GET-ACCOUNT-INFO 500001
+# 
+
+# Printing account info for unexisting account
+GET-ACCOUNT-INFO 501111
+# Printing account info without enough arguments
+GET-ACCOUNT-INFO
+# 
+
+# Testing withdrawal on chequing account with 0 balance: 500000 (throws InsufficientFundsException)
+WITHDRAW 500000 1
+# Balance has not changed for this account (still 0)
+GET-ACCOUNT-INFO 500000
+# 
+
+# Testing deposit on the chequing account 500000 (balance is now $100.00)
+DEPOSIT 500000 100
+# Printing new state of the account 500000
+GET-ACCOUNT-INFO 500000
+# 
+
+# Testing withdrawal of 500 from account 500001 (balance was $1000)
+WITHDRAW 500001 500
+# Printing new state of the account 500001 (balance should be $500 - transaction fees = $495.05)
+GET-ACCOUNT-INFO 500001
+# Trying to withdraw another 500 from account 500001 is now impossible
+WITHDRAW 500001 500
+# But we can withdraw 495 (the fees, but only the fees, can bring the balance below 0)
+WITHDRAW 500001 495
+# Printing new state of the account 500001 (balance should be $0.05 - transaction fees = $-4.90)
+GET-ACCOUNT-INFO 500001
+# 
+
+# Testing DEPOSIT on account that does not exist
+DEPOSIT 501010 100
+# Same for WITHDRAW on unexisting account
+WITHDRAW 2 100
+# If the amount is not a correct number, throws an InvalidCommandArgsException
+DEPOSIT 500000 hello
+# 
+
+# Creating a new savings account for Sonia Blade with a $6000 balance
+NEW-ACCOUNT SVG Sonia Blade 6000
+# Printing account info for this new account (id = 500002)
+GET-ACCOUNT-INFO 500002
+# Withdrawing money from the savings account does not involve transaction fees
+WITHDRAW 500002 250
+# Printing account info now shows the new balance of $5750.00
+GET-ACCOUNT-INFO 500002
+# Deposit works as usual: depositing 750 in savings account 500002
+DEPOSIT 500002 750
+# Printing account info now shows the new balance of $6500.00
+GET-ACCOUNT-INFO 500002
+# 
+
+# Creating a new savings account for Johnny Cage with a balance of $10
+NEW-ACCOUNT SVG Johnny Cage 10
+# Printing account info for this new account (id = 500003)
+GET-ACCOUNT-INFO 500003
+# 
+
+# Now using the INTEREST command, only the savings account will collect interest
+INTEREST
+# Now checking the balance of chequing account 500000 (no change to balance --> still $100.00)
+GET-ACCOUNT-INFO 500000
+# Now checking the balance of chequing account 500001 (no change to balance --> still $-4.90)
+GET-ACCOUNT-INFO 500001
+# Now checking the balance of savings account 500002 (interest was collected --> balance is now $6597.50)
+GET-ACCOUNT-INFO 500002
+# Now checking the balance of savings account 500003 (interest was collected --> balance is now $10.15)
+GET-ACCOUNT-INFO 500003
