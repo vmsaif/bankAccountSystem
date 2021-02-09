@@ -1,0 +1,6 @@
+# This is a test
+# 
+# This is another test
+# The next line (which is empty) should just be ignored
+
+# Final test of the comments
