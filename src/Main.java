@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static final String INPUT_FILE = "inputPhase4.txt";
+	private static final String INPUT_FILE = "inputPhase3.txt";
 	private static Scanner inFile = null;
 	private static String currLine;
 	private static String [] textParts;
@@ -106,7 +106,6 @@ public class Main {
 		textParts = currLine.split(" ");
 		try {
 			int accID = Integer.parseInt(textParts[1]);
-			
 			if(b.getBankAccount(accID) != null) {
 				b.getBankAccount(accID);
 			}

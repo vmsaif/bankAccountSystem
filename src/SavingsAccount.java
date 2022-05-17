@@ -1,8 +1,4 @@
 
-/*Assignment of COMP 1020 
- * Saif Mahmud
- * ID: 7808507
- */
 public class SavingsAccount extends BankAccount {
 	private static final double TRANSAC_FEE = 4.95;
 	private static final double INTEREST_RATE = 0.015/12;

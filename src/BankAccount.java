@@ -1,8 +1,4 @@
 
-/*Assignment of COMP 1020 
- * Saif Mahmud
- * ID: 7808507
- */
 import java.text.DecimalFormat;
 
 public abstract class BankAccount extends Bank{
@@ -32,7 +28,7 @@ public abstract class BankAccount extends Bank{
 	}
 	public void withdraw(double amount) throws InsufficientFundsException{
 		if(amount < balance) {
-		balance = balance - amount;
+			balance = balance - amount;
 		}
 		else {
 			throw new InsufficientFundsException();

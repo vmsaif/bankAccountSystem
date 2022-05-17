@@ -5,12 +5,12 @@
  */
 public class Bank {
 	private static final int MAX_VALUE = 15;
-	private int index = 0;
+	private static int index = 0;
 	private BankClient[] clientArray; 
 	protected BankAccount[] bankAccArray; 
 	private long userId;
 	private static long id = 1020000000000000l;
-	private int accID = 50000;
+	private int accID = 500000;
 	
 	public Bank() {
 		clientArray = new BankClient[MAX_VALUE];
@@ -24,7 +24,7 @@ public class Bank {
 	}
 	public BankClient getBankClient(String fName, String lName) {
 		BankClient bc = null;
-		if(fName == clientArray[index].getfName() && 
+		if(clientArray[index] != null && fName == clientArray[index].getfName() && 
 				lName == clientArray[index].getlName()) {
 			bc = clientArray[index];
 			System.out.println(bc);
@@ -51,6 +51,7 @@ public class Bank {
 		for (int i = 0; i < bankAccArray.length && (bankAccArray[i] != null); i++) {
 			if(bankAccArray[i].getAccID() == accid) {
 				out = bankAccArray[i];
+				System.out.println("output = " + out);
 			}
 		}
 		return out;
