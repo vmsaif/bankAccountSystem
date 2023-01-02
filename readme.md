@@ -1,4 +1,4 @@
-# Java Bank Assignment
+# Bank Account System
 
 This is a Java program that reads and processes instructions from a text file to simulate a bank. The program is designed to be modular and maintainable, following object-oriented design principles such as encapsulation and separation of concerns.
 
