@@ -1,4 +1,7 @@
-
+/*
+ * Author: Saif Mahmud
+ * Date: October 20, 2017
+ */
 public class SavingsAccount extends BankAccount {
 	
 	private static final double INTEREST_RATE = 1.5/100;

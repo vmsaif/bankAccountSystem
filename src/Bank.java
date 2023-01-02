@@ -1,7 +1,12 @@
 
-/*Assignment of COMP 1020 
+/*
  * Saif Mahmud
- * ID: 7808507
+ * 
+ * Date: October 20, 2017
+ * 
+ * This class is the main class of the program. It handles the creation of BankClient and BankAccount objects. 
+ * It also handles the logic of the program. 
+ *
  */
 public class Bank {
 	private static final int MAX_VALUE = 15;

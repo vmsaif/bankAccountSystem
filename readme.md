@@ -20,8 +20,10 @@ The program consists of three main classes: the Main class, the Bank class, and 
 ## Compile
 From the root directory of the repository, from terminal
 
-    javac src\*.java
+    javac -d bin src\*.java
 
 ## Run
-    java -cp src\ Main
+
+    java -cp bin\ Main
+
 In the project directory, there is a sample command file command.txt which has all the command to be parsed. 

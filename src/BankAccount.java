@@ -1,4 +1,10 @@
 
+/*
+ * Author: 	Saif Mahmud
+ * Date:	October 20, 2017
+ * Purpose:	Abstract class for BankAccount
+ */
+
 public abstract class BankAccount extends Bank {
 	private BankClient accOwner;
 	protected double balance;

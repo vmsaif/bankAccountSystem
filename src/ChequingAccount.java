@@ -1,4 +1,8 @@
-
+/*
+ * Author: Saif Mahmud
+ * Date: October 20, 2017
+ * 
+ */
 public class ChequingAccount extends BankAccount {
 
 	private static final double TRANSAC_FEE = 4.95;
