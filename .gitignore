@@ -1,0 +1,41 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# netbeans ignore personal configuration
+nbproject/private/
+
+# javadocs
+docs/
+
+# Eclipse project files
+.project
+.settings/
+
+# IntelliJ project files
+*.iml
+*.ipr
+*.iws
+
+# gradle
+.gradle/
+build/
+
+# Mac OSX
+.DS_Store

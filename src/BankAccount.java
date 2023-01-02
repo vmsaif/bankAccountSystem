@@ -1,7 +1,5 @@
 
-import java.text.DecimalFormat;
-
-public abstract class BankAccount extends Bank{
+public abstract class BankAccount extends Bank {
 	private BankClient accOwner;
 	protected double balance;
 	private int accID;
@@ -11,9 +9,8 @@ public abstract class BankAccount extends Bank{
 		this.balance = balance;
 		this.accID = accID;
 	}
-	public void collectInterest() {
-		System.out.println("hi i am collectInterest() from bankacc class"); 
-	}
+	public abstract void collectInterest();
+	 
 	public BankClient getAccOwner() {
 		return accOwner;
 	}
@@ -39,10 +36,9 @@ public abstract class BankAccount extends Bank{
 		String theOutputString = accOwner.toString();
 		thisArray = theOutputString.split(" ");
 		String fName = thisArray[0];
-		String lName = thisArray[1];
-		DecimalFormat dmf = new DecimalFormat(".##");
-		return ("Chequing account id: " + getAccID() + "Owner: " + fName + " " + lName + "\n" + 
-				"Balance :$" + dmf.format(getBalance()));
+		String lName = thisArray[1];					
+		return ("Chequing account id: " + getAccID() + " Owner: " + fName + " " + lName + "\n" 
+				+ "Balance : $"  + String.format("%.2f", getBalance()));
 	}
 	
 }

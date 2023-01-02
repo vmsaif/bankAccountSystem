@@ -7,6 +7,6 @@ public class InvalidCommandArgsException extends Exception {
 		this.icae = icae;
 	}
 	public String toString() {
-		return ("InvalidCommandArgsException: "+ icae +  ": First or last name is missing.");
+		return ("InvalidCommandArgsException: "+ icae +  ": First or last name or ID is missing.");
 	}
 }

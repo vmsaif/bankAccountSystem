@@ -5,9 +5,10 @@
  */
 public class Bank {
 	private static final int MAX_VALUE = 15;
-	private static int index = 0;
+	private static int cIndex = 0;
+	private static int bIndex = 0;
 	private BankClient[] clientArray; 
-	protected BankAccount[] bankAccArray; 
+	private BankAccount[] bankAccArray; 
 	private long userId;
 	private static long id = 1020000000000000l;
 	private int accID = 500000;
@@ -20,43 +21,65 @@ public class Bank {
 		this.userId = id;
 		id++;
 		BankClient bc = new BankClient (fName, lName, userId);
-		clientArray[index] = bc;
+		clientArray[cIndex] = bc;
+		cIndex++;
 	}
 	public BankClient getBankClient(String fName, String lName) {
 		BankClient bc = null;
-		if(clientArray[index] != null && fName == clientArray[index].getfName() && 
-				lName == clientArray[index].getlName()) {
-			bc = clientArray[index];
-			System.out.println(bc);
-		}
-		else {
-			System.out.println("CLIENT NOT FOUND");
+		Boolean found = false;
+		for(int i = 0; i < clientArray.length && !found; i++){
+			if(clientArray[i] != null){
+			
+				if(fName.equals(clientArray[i].getfName()) && lName.equals(clientArray[i].getlName())) {
+					found = true;
+					bc = clientArray[i];
+					
+				} else {
+					
+				}
+			}
 		}
 		return bc;
 	}
 	public void addChequingAccount(BankClient bcObject, double startingAmount) {
 		BankAccount bca = new ChequingAccount(bcObject, startingAmount, accID);
-		bankAccArray[index] = bca;
+		bankAccArray[bIndex] = bca;
+		bIndex++;
 		System.out.println("NEW ACCOUNT OF TYPE CHQ CREATED WITH ID = " + accID);
 		accID++;
 	}
 	public void addSavingsAccount(BankClient bcObject, double startingAmount) {
 		BankAccount bsa = new SavingsAccount(bcObject, startingAmount, accID);
-		bankAccArray[index] = bsa;
+		bankAccArray[bIndex] = bsa;
+		bIndex++;
 		System.out.println("NEW ACCOUNT OF TYPE SVG CREATED WITH ID = " + accID);
 		accID++;
 	}
-	public BankAccount getBankAccount(int accid) {
-		BankAccount out = null;
+	public int isValidId(int accid){
+		int index = -1;
+		for (int i = 0; i < bankAccArray.length ; i++) {
+			
+			if(bankAccArray[i] != null){
+				if(bankAccArray[i].getAccID() == accid) {
+					index = i;
+				}
+			}
+			
+		}
+		return index;
+	}
+
+	
+	public void payInterest() {
 		for (int i = 0; i < bankAccArray.length && (bankAccArray[i] != null); i++) {
-			if(bankAccArray[i].getAccID() == accid) {
-				out = bankAccArray[i];
-				System.out.println("output = " + out);
+			if(bankAccArray[i] instanceof SavingsAccount){
+				bankAccArray[i].collectInterest();
 			}
 		}
+	}
+	public BankAccount getBankAccount(int index) {
+		BankAccount out = bankAccArray[index];
 		return out;
 	}
-	public void payInterest() {
-		
-	}
+	
 }

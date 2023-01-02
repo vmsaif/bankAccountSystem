@@ -18,11 +18,11 @@ public class ChequingAccount extends BankAccount {
 		String x = super.toString();
 		String[] strArr = x.split(" ");
 		String out = strArr[0] + " " + strArr[1] + " " + strArr[2] + " " + strArr[3] + "\n"
-					 + strArr[4] + " " + strArr[5] + " " + strArr[6] + "\n"
-					 + strArr[7] + " " + strArr[8];
+					 + strArr[4] + " " + strArr[5] + " " + strArr[6] + strArr[7] + " " + strArr[8];
 		return out;
+		
 	}
-	public void payInterest() {
+	public void collectInterest() {
 		
 	}
 }

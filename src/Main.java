@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static final String INPUT_FILE = "inputPhase3.txt";
+	private static final String INPUT_FILE = "command.txt";
 	private static Scanner inFile = null;
 	private static String currLine;
 	private static String [] textParts;
@@ -75,9 +75,11 @@ public class Main {
 		textParts = currLine.split(" ");
 		int accID = Integer.parseInt(textParts[1]);
 		double amount = Double.parseDouble(textParts[2]);
-		if(b.getBankAccount(accID) != null) {
+		
+		int index = b.isValidId(accID);
+		if(index != -1) {
 			try {
-				b.getBankAccount(accID).withdraw(amount);
+				b.getBankAccount(index).withdraw(amount);
 			} catch (InsufficientFundsException e) {
 				System.out.println(e);
 			}
@@ -90,49 +92,67 @@ public class Main {
 		textParts = currLine.split(" ");
 		int accID = Integer.parseInt(textParts[1]);
 		try {
-		double amount = Double.parseDouble(textParts[2]);
-		if(b.getBankAccount(accID) != null) {
-			b.getBankAccount(accID).deposit(amount);
-		}
-		else {
-			System.out.println("ACCOUNT NOT FOUND");
-		}
-		}
-		catch(NumberFormatException e){
+			double amount = Double.parseDouble(textParts[2]);
+			int index = b.isValidId(accID);
+			if(index != -1) {
+				b.getBankAccount(index).deposit(amount);
+			} else {
+				System.out.println("ACCOUNT NOT FOUND");
+			}
+		} catch(NumberFormatException e) {
 			throw new InvalidCommandArgsException(textParts[2]);
 		}
 	}
 	private static void findAccountByID(Bank b) throws InvalidCommandArgsException {
 		textParts = currLine.split(" ");
-		try {
-			int accID = Integer.parseInt(textParts[1]);
-			if(b.getBankAccount(accID) != null) {
-				b.getBankAccount(accID);
+		if(textParts.length == 2){
+			try {
+				int accID = Integer.parseInt(textParts[1]);
+				int index = b.isValidId(accID); //if index is -1, then the account is not found
+				if(index != -1) {
+					System.out.println(b.getBankAccount(index));
+				}
+				else {
+					System.out.println("ACCOUNT NOT FOUND");
+				}
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println(e);
+				throw new InvalidCommandArgsException(textParts[0]);
 			}
-			else {
-				System.out.println("ACCOUNT NOT FOUND");
-			}
-		}
-		catch(ArrayIndexOutOfBoundsException e){
+		} else {
 			throw new InvalidCommandArgsException(textParts[0]);
 		}
+		
 	}
 	private static void processNewAccount(Bank b) {
 		textParts = currLine.split(" ");
-		try {
-		String accType = textParts[1];
-		String fName = textParts[2];
-		String lName = textParts[3];
-		double iniBalance = Double.parseDouble(textParts[4]);
-			
-			if(accType.matches("CHQ")) {
-				b.addChequingAccount(b.getBankClient(fName, lName), iniBalance);
+
+		if(textParts.length == 5){
+			try {
+				String accType = textParts[1];
+				String fName = textParts[2];
+				String lName = textParts[3];
+
+				if(b.getBankClient(fName, lName) != null) {
+					double iniBalance = Double.parseDouble(textParts[4]);
+					
+					if(accType.matches("CHQ")) {
+						b.addChequingAccount(b.getBankClient(fName, lName), iniBalance);
+					}
+					else if(textParts[1].matches("SVG")) {
+						b.addSavingsAccount(b.getBankClient(fName, lName), iniBalance);
+					}
+					else {
+						System.out.println("INVALID ACCOUNT TYPE");
+					}
+				} else {
+					System.out.println("CLIENT NOT FOUND");
+				}
+			} catch (ArrayIndexOutOfBoundsException aie) {
+				System.out.println(aie.getStackTrace());
 			}
-			else if(textParts[1].matches("SVG")) {
-				b.addSavingsAccount(b.getBankClient(fName, lName), iniBalance);
-			}
-		} catch (ArrayIndexOutOfBoundsException aie) {
-			//do nothing
+		} else {
+			System.out.println("INVALID NUMBER OF ARGUMENTS for NEW-ACCOUNT, 5 Expected.");
 		}
 	}
 	public static void processComment() {
