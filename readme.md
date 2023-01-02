@@ -12,8 +12,6 @@ The program consists of three main classes: the Main class, the Bank class, and 
 - Reading a file line by line and processing each line as a command in the Main class.
 - Parsing a command and determining its type in the Main class.
 - Handling different types of commands, such as comment commands, in the Main class.
-- Implementing the Bank class and its methods, such as those for adding and removing clients and accounts, and for performing transactions.
-- Implementing the BankClient class and its methods, such as those for getting and setting the client's name and address.
 - Testing code using sample input files and thinking of additional test cases.
 
 # How to Run
