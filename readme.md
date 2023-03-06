@@ -1,5 +1,7 @@
 # Bank Account System
 
+[![Hits](https://hits.sh/github.com/vmsaif/bankAccountSystem.svg?label=Visits&color=100b75)](https://hits.sh/github.com/vmsaif/bankAccountSystem/)
+
 This is a Java program that reads and processes instructions from a text file to simulate a bank. The program is designed to be modular and maintainable, following object-oriented design principles such as encapsulation and separation of concerns.
 
 The program consists of three main classes: the Main class, the Bank class, and the BankClient class. The Main class is responsible for reading the input file and processing each line as a command. The Bank class keeps track of the bank's clients and accounts, and handles requests from the Main class to perform various actions such as adding clients and accounts, or performing transactions. The BankClient class represents a client of the bank, and includes information such as the client's name and id, as well as methods for getting and setting this information.
