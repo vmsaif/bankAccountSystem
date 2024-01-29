@@ -2,28 +2,40 @@
 
 [![Hits](https://hits.sh/github.com/vmsaif/bankAccountSystem.svg?label=Visits&color=100b75)](https://hits.sh/github.com/vmsaif/bankAccountSystem/)
 
-This is a Java program that reads and processes instructions from a text file to simulate a bank. The program is designed to be modular and maintainable, following object-oriented design principles such as encapsulation and separation of concerns.
+This Java program simulates the operations of a bank by reading and processing instructions from a text file. Designed with object-oriented principles, the system is modular, maintainable, and showcases effective use of polymorphism in managing bank clients and accounts.
 
-The program consists of three main classes: the Main class, the Bank class, and the BankClient class. The Main class is responsible for reading the input file and processing each line as a command. The Bank class keeps track of the bank's clients and accounts, and handles requests from the Main class to perform various actions such as adding clients and accounts, or performing transactions. The BankClient class represents a client of the bank, and includes information such as the client's name and id, as well as methods for getting and setting this information.
+## Project Structure
+- **Main Class**: Handles the reading of the input file and processes each command line.
+- **Bank Class**: Manages the bank's clients and accounts, performing actions such as adding clients and accounts, or performing transactions.
+- **BankClient Class**: Represents a client of the bank, containing information like the client's name and ID.
+- **BankAccount Classes**: Includes an abstract `BankAccount` class along with `ChequingAccount` and `SavingsAccount` subclasses, demonstrating the use of polymorphism.
 
-## What I have learned
+## Features
+- Efficient processing of various banking commands through text file parsing.
+- Modular design for easy scalability and maintenance.
+- Robust error handling through comprehensive exception management.
+- Implementation of banking operations such as account creation, deposits, withdrawals, and interest calculations, leveraging polymorphism.
+- Illustration of object-oriented concepts including inheritance, encapsulation, and particularly polymorphism in the design of bank account types.
 
-- Building a program that reads and processes instructions from a text file in Java.
-- Implementing a set of related classes of objects, including a Main class, a Bank class, and a BankClient class.
-- Designing a program using object-oriented principles, such as keeping methods short and simple, distributing work among many small methods, and making instance variables private and methods public.
-- Reading a file line by line and processing each line as a command in the Main class.
-- Parsing a command and determining its type in the Main class.
-- Handling different types of commands, such as comment commands, in the Main class.
-- Testing code using sample input files and thinking of additional test cases.
+## Learnings
+- Developing a Java application simulating real-world banking operations.
+- Designing a class hierarchy to represent different types of bank accounts, using polymorphism to handle different account behaviors.
+- Employing exception handling to ensure robust error management in a banking context.
 
-# How to Run
-## Compile
-From the root directory of the repository, from terminal
 
-    javac -d bin src\*.java
+## How to Compile and Run
+### Compile
+From the root directory of the project, compile the Java files:
 
-## Run
+```bash
+javac -d bin src/*.java
+```
 
-    java -cp bin\ Main
+### Run
+Execute the Main class:
+```bash
+java -cp bin/ Main
+```
 
-In the project directory, there is a sample command file command.txt which has all the command to be parsed. 
+### Input File
+The `command.txt` file in the project directory contains the necessary commands for simulation.
